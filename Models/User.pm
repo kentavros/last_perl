@@ -32,30 +32,25 @@ sub checkUserEditForm
 {
     my $self=shift;
     my $data=shift;
-    #print $data->{'name'};
-    #print $data->{'pass'};
-
     if  (($self->{'validator'}->valName($data->{'name'})) && ($self->{'validator'}->valPass($data->{'pass'})))
     {
         my $pass = md5_hex($data->{'pass'});
         my $query = 'UPDATE users SET name=\''.$data->{'name'}.'\', pass=\''.$pass.'\' WHERE id=\''.$data->{'id'}.'\'';
-        #
-        #
-        #TYT!!!!
-        #
-        #
+        if ($self->{'Db'}->update($query))
+        {
+            print 'Update data';
+            return 1;
+        }
+        else {
+            #print 'not update';
+            return 0;
+        }
     }
     else 
     {
+        #print 'Not valid';
         return 0;
     }
-       
-    
-
-
-#my $self = $_[0];
-    #return 1;
-
 }
 
 

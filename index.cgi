@@ -1,3 +1,4 @@
+#!D:\Dwimperl\perl\bin\perl.exe
 #!/usr/bin/perl
 
 ###!d:/xampp/Dwimperl/perl/bin/perl.exe
