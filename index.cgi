@@ -24,11 +24,15 @@ use Utils::Validate;
 use Controllers::Cabinet;
 use Controllers::Login;
 use Controllers::Profile;
+use File::Basename qw(dirname);
+use lib dirname(__FILE__).'/Utils/';
+use Utils::CGI::Session;
 
 print "Content-type: text/html; charset=utf-8\n\n";
 #print '<pre>'.Dumper(\%in).'</pre>';
 #my $request = \%in;
 #my $request = %ENV->{'QUERY_STRING'};
+
 my $router = Utils::Router->new();
 my $page = $router->selectPage();
 
