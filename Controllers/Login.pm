@@ -29,7 +29,7 @@ sub run
     {
         my $postData = \%in;
     {
-        if ($self->{'UModel'}->checkLogForm($postData))
+        if ($self->{'UModel'}->checkLogForm2($postData))
         {
             print 'Welcome';
             #redirect

@@ -9,8 +9,8 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 sub is_autorized
 {
-    my $self = $_[0];
-    return 1;
+    #my $self = $_[0];
+    #return 1;
 }
 
 sub addUser
@@ -85,6 +85,27 @@ sub checkRegForm($)
         return 1;
     }
     return 0;
+}
+
+sub checkLogForm2
+{
+    my $self = shift;
+    my $data = shift;
+    my $email = $data->{'email'};
+    my $pass = md5_hex($data->{'password'});
+    my $query = 'SELECT email, pass FROM users WHERE email=\''.$email.'\'';
+    my $res = $self->{'Db'}->select($query);
+    if ($email eq $res->[0]->{'email'} && $pass eq $res->[0]->{'pass'})
+    {
+        #print 'Loget';
+        return 1;
+    }
+    else
+    {
+        #print 'Wrong data input!';
+        return 0;
+    }
+
 }
 
 sub checkLogForm
