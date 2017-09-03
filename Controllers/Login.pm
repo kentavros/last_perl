@@ -9,6 +9,9 @@ use vars qw(%in);
 $|=1;
 ReadParse();
 
+#use File::Basename qw(dirname);
+#use lib dirname(__FILE__).'/../Utils/';
+#use Utils::CGI::Session;
 
 sub run
 {
@@ -31,8 +34,17 @@ sub run
     {
         if ($self->{'UModel'}->checkLogForm2($postData))
         {
-            print 'Welcome';
+
+            if ($self->{'UModel'}->login($postData))
+            {
+                $self->{'UModel'}->is_autorized();
+
+                print '<a href="index.cgi">Welcome</a><br>';
+            }
+
             #redirect
+#            print "Location: index.cgi\n\n";
+#            exit();
         }
 #			else
 #			{

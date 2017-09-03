@@ -11,7 +11,7 @@ sub run
 	my ($self) = shift;
 	my $templateName = 'templates/home/home.html';
 	$self->{'View'}->read($templateName);
-	if($self->{'UModel'}->is_autorized())
+	if($self->{'UModel'}->is_autorized()) #gest ili net true\false
 	{
 		my %buttons;
 		%buttons->{'BUTT_showCabinetButton'} = $self->{'View'}->makeButton({'LANG_destination'=>'index.cgi?page=cabinet',
